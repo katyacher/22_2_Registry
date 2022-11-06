@@ -19,11 +19,11 @@ int main() {
                 Queue.begin()->second -= 1;
                 if(Queue.begin()->second == 0){
                     it = Queue.begin();
-                    Queue.erase(it); // убрать первый элемент - переместить указатель begin на следующий элемент
+                    Queue.erase(it);
                 }
             }
         } else {
-            if(Queue.count(answer) > 0){//если есть такой в очереди
+            if(Queue.count(answer) > 0){
                 Queue[answer] += 1;
             }else {
                 Queue.emplace(answer, 1);
