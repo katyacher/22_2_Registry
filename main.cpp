@@ -4,7 +4,7 @@
 int main() {
     std::cout << "22.2 Registry" << std::endl;
     std::string answer;
-    std::map<std::string, int> Queue;
+    std::map<std::string, int> queue_of_people;
     std::map<std::string,int>::iterator it;
 
     while(true){
@@ -12,28 +12,28 @@ int main() {
         std::cin >> answer;
         if(answer == "Exit") break;
         if (answer == "Next"){
-            if(Queue.begin() == Queue.end()){
-                std::cout << "There is no person in the queue." << std::endl;
+            if(queue_of_people.empty()){
+                std::cout << "There is no person in the queue_of_people." << std::endl;
             } else{
-                std::cout << (Queue.begin()->first) << std::endl;
-                Queue.begin()->second -= 1;
-                if(Queue.begin()->second == 0){
-                    it = Queue.begin();
-                    Queue.erase(it);
+                std::cout << (queue_of_people.begin()->first) << std::endl;
+                queue_of_people.begin()->second -= 1;
+                if(queue_of_people.begin()->second == 0){
+                    it = queue_of_people.begin();
+                    queue_of_people.erase(it);
                 }
             }
         } else {
-            if(Queue.count(answer) > 0){
-                Queue[answer] += 1;
+            if(queue_of_people.count(answer) > 0){
+                queue_of_people[answer] += 1;
             }else {
-                Queue.emplace(answer, 1);
+                queue_of_people.emplace(answer, 1);
             }
         }
     }
 
-    // show queue:
-    for (it=Queue.begin(); it!=Queue.end(); ++it)
-        std::cout << "Person in the queue:" << std::endl;
+    // show queue_of_people:
+    for (it=queue_of_people.begin(); it != queue_of_people.end(); ++it)
+        std::cout << "Person in the queue_of_people:" << std::endl;
         std::cout << it->first << " : " << it->second << std::endl;
 
     return 0;
